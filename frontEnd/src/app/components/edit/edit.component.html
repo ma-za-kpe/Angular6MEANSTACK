@@ -1,0 +1,42 @@
+<div>
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+            <h3>Edit a new issue</h3>
+          </section>
+          <mat-divider></mat-divider>
+          <br>
+          <form [formGroup]="updateForm" class="edit-form">
+
+              <mat-form-field class="field-full-list">
+                <input matInput required placeholder="issue title" formControlName="title" #title>
+              </mat-form-field>
+
+              <mat-form-field class="field-full-list">
+                <input matInput required placeholder="issue responsible" formControlName="responsible" #responsible>
+              </mat-form-field>
+
+              <mat-form-field class="field-full-list">
+                <textarea matInput required placeholder="issue description" formControlName="description" #desciption></textarea>
+              </mat-form-field>
+
+              <mat-form-field class="field-full-list">
+                <mat-select placeholder="issue severity" formControlName="severity" #severity>
+                  <mat-option value="low">Low</mat-option>
+                  <mat-option value="medium">Meduim</mat-option>
+                  <mat-option value="high">High</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="field-full-list">
+                  <mat-select placeholder="issue status" formControlName="status" #status>
+                    <mat-option value="Open">Open</mat-option>
+                    <mat-option value="Closed">Closed</mat-option>
+                    <mat-option value="In Progess">In Progess</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              <button mat-raised-button color="accent" routerLink="/list">Back</button>
+              <button type="submit" (click)="updateIssue(title.value, responsible.value, desciption.value, severity.value, status.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Add</button>
+          </form>
+    </mat-card>
+  </div>
